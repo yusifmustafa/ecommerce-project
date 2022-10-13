@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Box, Image, Button, Grid, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { BACKEND_URL } from "../../../Backend";
+import { BACKEND_URL } from "../../Backend";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { ecommerceActions } from "../../../redux/EcommerceSlice";
+import { ecommerceActions } from "../../redux/EcommerceSlice";
 
 const Card = () => {
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
-  console.log(list);
+  // console.log(list);
   const [searchTab, setsearchTab] = useState("");
 
   const handleAddToBasket = (id) => {
@@ -52,7 +52,7 @@ const Card = () => {
                   height: "400px",
                 }}
               >
-                <Link to="/link">
+                <Link to={`/itemInfo/${item.id}`}>
                   <Box d="flex" alignItems="center">
                     <div
                       style={{
@@ -64,7 +64,7 @@ const Card = () => {
                         marginBottom: "inherit",
                       }}
                     >
-                      {<Image w={170} h={150} src={`${item.image}`} />}
+                      {<Image w={150} h={150} src={`${item.image}`} />}
                     </div>
                   </Box>
                   <Box
@@ -73,7 +73,10 @@ const Card = () => {
                     as="h4"
                     lineHeight="tight"
                     style={{ letterSpacing: "1px" }}
+                    p={2}
                   >
+                    <h6> Category({item.category})</h6>
+                    <br /> <hr />
                     {item.title}
                   </Box>
                   <Box>

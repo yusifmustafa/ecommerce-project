@@ -1,10 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ecommerceSlice from "../redux/EcommerceSlice";
+
+import ecommerceReducer from "../redux/EcommerceSlice";
+
 
 const store = configureStore({
   reducer: {
-    ecommerce: ecommerceSlice,
+    ecommerce: ecommerceReducer,
   },
+  middleware: getDefaultMiddleware =>
+  getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
 
 export default store;
