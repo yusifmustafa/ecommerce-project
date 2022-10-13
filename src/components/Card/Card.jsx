@@ -45,11 +45,11 @@ const Card = () => {
                 borderWidth="1px"
                 borderRadius="lg"
                 overflow="hidden"
-                p="6"
+                p="8"
                 style={{
                   marginTop: "10px",
                   width: "350px",
-                  height: "400px",
+                  height: "440px",
                 }}
               >
                 <Link to={`/itemInfo/${item.id}`}>
