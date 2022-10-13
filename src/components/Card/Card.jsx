@@ -92,7 +92,7 @@ const Card = () => {
       <div
         style={{ display: "flex", justifyContent: "center", padding: "5px" }}
       >
-        <Grid templateColumns="repeat(3,1fr)" gap={18}>
+        <Grid templateColumns="repeat(4,1fr)" gap={18}>
           {list
             .filter((item) => item.title?.includes(searchTab))
             .filter((item) =>
