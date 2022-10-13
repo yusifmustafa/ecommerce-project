@@ -8,7 +8,7 @@ import "./ItemInfo.css";
 
 const ItemInfo = () => {
   const [itemInfo, setIteminfo] = useState({});
-  console.log("itemInfo id", itemInfo);
+  
   const { id } = useParams();
 
   useEffect(() => {

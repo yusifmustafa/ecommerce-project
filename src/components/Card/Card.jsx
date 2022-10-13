@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Box, Image, Button, Grid, Text } from "@chakra-ui/react";
+import { Box, Image, Button, Grid, Text, filter } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BACKEND_URL } from "../../Backend";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { ecommerceActions } from "../../redux/EcommerceSlice";
+import "./Card.css";
 
 const Card = () => {
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
-  // console.log(list);
+  const [filteredCategory, setFilteredCategory] = useState("");
   const [searchTab, setsearchTab] = useState("");
 
   const handleAddToBasket = (id) => {
@@ -23,8 +24,63 @@ const Card = () => {
   useEffect(() => {
     axios.get(BACKEND_URL + "/products").then((rsp) => setList(rsp.data));
   }, []);
+
+  const handleClickCategory = (e) => {
+    if (e.target.innerText === "Man") {
+      setFilteredCategory("men's clothing");
+    }
+    if (e.target.innerText === "Woman") {
+      setFilteredCategory("women's clothing");
+    }
+    if (e.target.innerText === "Electronics") {
+      setFilteredCategory("electronics");
+    }
+    if (e.target.innerText === "Jewelery") {
+      setFilteredCategory("jewelery");
+    }
+    if (e.target.innerText === "All") {
+      setFilteredCategory("");
+    }
+  };
   return (
     <>
+      <div className="buttons">
+        <Button
+          onClick={handleClickCategory}
+          colorScheme="pink"
+          variant="ghost"
+        >
+          All
+        </Button>
+        <Button
+          onClick={handleClickCategory}
+          colorScheme="pink"
+          variant="ghost"
+        >
+          Man
+        </Button>{" "}
+        <Button
+          onClick={handleClickCategory}
+          colorScheme="pink"
+          variant="ghost"
+        >
+          Woman
+        </Button>{" "}
+        <Button
+          onClick={handleClickCategory}
+          colorScheme="pink"
+          variant="ghost"
+        >
+          Electronics
+        </Button>{" "}
+        <Button
+          onClick={handleClickCategory}
+          colorScheme="pink"
+          variant="ghost"
+        >
+          Jewelery
+        </Button>{" "}
+      </div>
       <div style={{ width: "250px", display: "flex", margin: "0 auto" }}>
         <input
           type="text"
@@ -39,6 +95,11 @@ const Card = () => {
         <Grid templateColumns="repeat(3,1fr)" gap={18}>
           {list
             .filter((item) => item.title?.includes(searchTab))
+            .filter((item) =>
+              filteredCategory === ""
+                ? list
+                : item.category === filteredCategory
+            )
             .map((item, key) => (
               <Box
                 key={item.id}
@@ -103,7 +164,7 @@ const Card = () => {
                 <Button
                   onClick={() => handleAddToBasket(item.id)}
                   style={{ marginTop: "1rem" }}
-                  colorScheme="pink"
+                  colorScheme="red"
                 >
                   Add to basket
                 </Button>
