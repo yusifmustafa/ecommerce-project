@@ -133,14 +133,18 @@ const Card = () => {
                     fontWeight="semibold"
                     as="h4"
                     lineHeight="tight"
-                    style={{ letterSpacing: "1px" }}
+                    style={{
+                      letterSpacing: "1px",
+                      height: "95px",
+                      overflow: "hidden",
+                    }}
                     p={2}
                   >
                     <h6> Category({item.category})</h6>
                     <br /> <hr />
-                    {item.title}
+                    <div>{item.title}</div>
                   </Box>
-                  <Box>
+                  <Box style={{ marginTop: "10px" }}>
                     {" "}
                     <strong>${item.price}</strong>{" "}
                     <span>{item.rating.count}</span>
