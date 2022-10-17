@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, Image, Button, Grid, Text, filter } from "@chakra-ui/react";
+import { Box, Image, Button, Grid, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BACKEND_URL } from "../../Backend";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { ecommerceActions } from "../../redux/EcommerceSlice";
 import "./Card.css";
+import Navbar from "../Navbar/Navbar";
 
 const Card = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,8 @@ const Card = () => {
     }
   };
   return (
-    <>
+    <div className="products">
+      <Navbar />
       <div className="buttons">
         <Button
           onClick={handleClickCategory}
@@ -86,13 +88,19 @@ const Card = () => {
           type="text"
           name="search"
           onChange={(e) => setsearchTab(e.target.value)}
+          variant="standard"
           placeholder="Search"
         />
       </div>
       <div
-        style={{ display: "flex", justifyContent: "center", padding: "5px" }}
+        className="product-list"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "5px",
+        }}
       >
-        <Grid templateColumns="repeat(4,1fr)" gap={18}>
+        <Grid templateColumns="repeat(3,1fr)" gap={18}>
           {list
             .filter((item) => item.title?.includes(searchTab))
             .filter((item) =>
@@ -140,7 +148,7 @@ const Card = () => {
                     }}
                     p={2}
                   >
-                    <h6> Category({item.category})</h6>
+                    <h6>Category({item.category})</h6>
                     <br /> <hr />
                     <div>{item.title}</div>
                   </Box>
@@ -176,7 +184,7 @@ const Card = () => {
             ))}
         </Grid>
       </div>
-    </>
+    </div>
   );
 };
 

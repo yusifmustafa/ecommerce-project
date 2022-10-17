@@ -8,7 +8,7 @@ import "./ItemInfo.css";
 
 const ItemInfo = () => {
   const [itemInfo, setIteminfo] = useState({});
-  
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -34,12 +34,15 @@ const ItemInfo = () => {
             <h2>{itemInfo.title}</h2>
           </Box>
           <hr />
-          <Box p={2}>
-            <strong>${itemInfo.price}</strong>
-          </Box>
+
           <hr />
           <Box p={4}>
             <h6>{itemInfo.description}</h6>
+            <hr />
+          </Box>
+          <hr />
+          <Box p={2} float="right">
+            <strong>Price:${itemInfo.price}</strong>
           </Box>
         </Box>
       </Card>

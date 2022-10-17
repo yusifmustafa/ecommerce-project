@@ -21,7 +21,7 @@ const Basket = () => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
-          <Button colorScheme="pink">Go somewhere</Button>
+          <Button colorScheme="red">Go somewhere</Button>
         </div>
       </div>
     </div>
