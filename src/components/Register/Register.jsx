@@ -45,10 +45,8 @@ const Register = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const localStorageData = JSON.parse(localStorage.getItem("formData"));
-    console.log("ssssss", typeof localStorageData);
-    let formData = localStorageData ? localStorageData : [];
-    console.log("formdara", formData);
-    formData.push({
+     let formData = localStorageData ? localStorageData : [];
+     formData.push({
       email: registerForm.email,
       password: registerForm.password,
       username: registerForm.username,

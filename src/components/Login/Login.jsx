@@ -49,17 +49,17 @@ const Login = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const localStorageData = JSON.parse(localStorage.getItem("formData"));
-    const deyisen = localStorageData.find(
+    const findData = localStorageData.find(
       (item) => item.email === form.email && form.password === item.password
     );
 
-    if (deyisen) {
+    if (findData) {
       notify2();
       setTimeout(() => {
         navigateToPage();
       }, 2500);
     }
-    if (!deyisen) {
+    if (!findData) {
       notify();
     }
   };

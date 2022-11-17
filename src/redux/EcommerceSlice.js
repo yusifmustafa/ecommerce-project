@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BACKEND_URL } from "../Backend";
-
+ 
 const initialState = {
   basketItems: [],
 };
@@ -11,14 +10,17 @@ const ecommerceSlice = createSlice({
 
   reducers: {
     async insertBasket(state, action) {
-      console.log("actionpayload", action.payload);
-
-      const response = await fetch(
-        BACKEND_URL + `/products/${action.payload.data}`
-      );
-      const basketItem = await response.json();
-      console.log("basketitem", basketItem);
-      state.basketItems.push(basketItem);
+      console.log(action.payload.data);
+      // const response = await fetch(
+      //   BACKEND_URL + `/products/${action.payload.data}`
+      // );
+      // const basketItem = await response.json();
+      //console.log("basketitem", basketItem);
+      const datas = [];
+      datas.push(action.payload.data);
+      console.log("datas",datas);
+      state.basketItems=datas;
+      // state.basketItems.push({ ...state.basketItems, basketItem });
       console.log("basketItems", state.basketItems);
     },
   },
