@@ -10,9 +10,6 @@ body {
 .content-container {
   display: flex;
   margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: white;
   max-width: 660px;
   width: 100%;
@@ -28,11 +25,13 @@ body {
   height: 0;
   border-top: 100px solid #ffc500;
   border-right: 100px solid transparent;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
 .triangle-topleft:hover {
   border-top: 100px solid #ffd54d;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
@@ -66,12 +65,14 @@ body {
   margin: 0 5px;
   border: 2px solid #eaeaea;
   border-radius: 5px;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
 .product-image--list li.item-selected {
   box-shadow: 1px 1px 1px #888888;
   border: 2px solid #ffc500;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
@@ -97,6 +98,7 @@ body {
   opacity: 0.6;
 }
 
+// RATING STARS FROM https://www.everythingfrontend.com/posts/star-rating-input-pure-css.html
 .rating {
   overflow: hidden;
   display: inline-block;
@@ -155,12 +157,14 @@ a:hover.reviews {
   max-width: 275px;
   width: 100%;
   height: 50px;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
 .my-btn:hover {
   box-shadow: 1px 1px 1px #888888;
   background-color: #ffd54d;
+  -webkit-transition: all ease 0.25s;
   transition: all ease 0.25s;
 }
 
@@ -179,4 +183,4 @@ a:hover.reviews {
   font-weight: bold;
   font-size: 1.5em;
   margin: 0 auto;
-} /*# sourceMappingURL=ItemInfo.css.map */
+}

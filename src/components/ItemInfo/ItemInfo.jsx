@@ -1,15 +1,16 @@
-import { Box, Image } from "@chakra-ui/react";
-import axios from "axios";
+ import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+ import { Link, useParams } from "react-router-dom";
 import { BACKEND_URL } from "../../Backend";
 import "./ItemInfo.css";
 
 const ItemInfo = () => {
   const [itemInfo, setIteminfo] = useState({});
+  console.log("iteminfo", itemInfo);
 
   const { id } = useParams();
+
+   
 
   useEffect(() => {
     axios
@@ -18,35 +19,58 @@ const ItemInfo = () => {
   }, []);
 
   return (
-    <div className="itemInfo">
-      <Card style={{ width: "28rem", padding: "1.5rem" }}>
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p="6">
-          <Box d="flex" alignItems="center">
-            <Image
-              w={150}
-              h={150}
-              src={`${itemInfo.image}`}
-              alt={itemInfo.title}
-              style={{ margin: "0 auto" }}
-            />
-          </Box>
-          <Box mt="1" fontWeight="600" as="h4" lineHeight="tight">
-            <h2>{itemInfo.title}</h2>
-          </Box>
-          <hr />
-
-          <hr />
-          <Box p={4}>
-            <h6>{itemInfo.description}</h6>
-            <hr />
-          </Box>
-          <hr />
-          <Box p={2} float="right">
-            <strong>Price:${itemInfo.price}</strong>
-          </Box>
-        </Box>
-      </Card>
-    </div>
+    <>
+      <div class="codepen-container">
+        <div class="content-container">
+          <div class="left-container">
+            <div class="triangle-topleft">
+              <Link to="/card" class="back-arrow" id="buy-toaster"></Link>
+            </div>
+            <div class="product-image--container">
+              <img
+                class="product-image--featured"
+                id="featured"
+                src={itemInfo.images ? itemInfo.images[2] : ""}
+                alt="toaster"
+                style={{ width: "550px" }}
+              />
+            </div>
+          </div>
+          <div class="right-container">
+            <div>
+              <h1 class="title">{itemInfo.title}</h1>
+              <h2 class="subtitle subtitle-container">{itemInfo.category}</h2>
+            </div>
+            <span>
+              <p>
+                Price:
+                <span class="emphasize">${itemInfo.price}</span>
+              </p>
+            </span>
+            <div>
+              <h2 class="title">Product Description</h2>
+              <div class="subtitle-container">
+                <span>Rating:{itemInfo.rating}</span>
+                <span>|</span>
+                <span>Stock:{itemInfo.stock}</span>
+              </div>
+              <p>{itemInfo.description}</p>
+            </div>
+            <div>
+              <button class="my-btn flex-btn">
+                <span>
+                  <img
+                    src="https://cdn1.iconfinder.com/data/icons/material-core/20/shopping-cart-128.png"
+                    class="cart-icon"
+                  />
+                </span>
+                <span class="btn-text">Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
